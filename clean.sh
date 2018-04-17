@@ -21,18 +21,9 @@ if yn "Remove musical files (such as GarageBand, Logic loops)?"; then
     rm -rf /Applications/GarageBand.app
 fi
 
-if yn "Purge OS help files and documentation?"; then
-    rm -rf /Library/Documentation
-fi
-
-if yn "Purge all Adobe products? (Careful!)"; then
-    rm -rf /Applications/Adobe*
-    rm -rf /Library/Application\ Support/Adobe
-fi
-
-if yn "Remove Dashboard widgets?"; then
-    rm -rf /Library/Widgets
-fi
+yn "Purge OS help files and documentation?" && rm -rf /Library/Documentation
+yn "Purge all Adobe products? (Careful!)" && (rm -rf /Applications/Adobe*; rm -rf /Library/Application\ Support/Adobe)
+yn "Remove Dashboard widgets?" && rm -rf /Library/Widgets
 
 if yn "Remove non-English local dictionaries?"; then
     if yn "Remove all local dictionaries?"; then
@@ -42,17 +33,11 @@ if yn "Remove non-English local dictionaries?"; then
     fi
 fi
 
-if yn "Remove Microsoft Silverlight?"; then
-    rm -rf /Applications/Microsoft\ Silverlight
-fi
-
-if yn "Remove iTunes files?"; then
-    rm -rf /Library/iTunes
-fi
-
-if yn "Purge factory desktop pictures?"; then
-    rm -rf /Library/Desktop\ Pictures
-fi
+yn "Remove Microsoft Silverlight?" && rm -rf /Applications/Microsoft\ Silverlight
+yn "Remove iTunes files?" && rm -rf /Library/iTunes
+yn "Remove factory desktop pictures?" && rm -rf /Library/Desktop\ Pictures
+yn "Remove Default Account User Pictures?" && rm -rf /Library/User\ Pictures
+yn "Remove Screen Savers?" && rm -rf /Library/Screen\ Savers
 
 if yn "Remove Photo Booth library?"; then
     if yn "Dump Photo Booth library on desktop for you to sort out?"; then
@@ -61,13 +46,8 @@ if yn "Remove Photo Booth library?"; then
     rm -rf /Users/$user/Pictures/{Photo\ Booth\ Library}
 fi
 
-if yn "Remove Photos library?"; then
-    rm -rf /Users/$user/Pictures/Photos\ Library
-fi
-
-if yn "Remove Microsoft Auto Update and Error Reporter?"; then
-    rm -rf /Library/Application\ Support/Microsoft
-fi
+yn "Remove Photos library?" && rm -rf /Users/$user/Pictures/Photos\ Library
+yn "Remove Microsoft Auto Update and Error Reporter?" && rm -rf /Library/Application\ Support/Microsoft
 
 if yn "Remove McAfee? (DON'T)"; then
     rm -rf /Applications/McAfee*
@@ -75,12 +55,4 @@ if yn "Remove McAfee? (DON'T)"; then
     rm -rf /Library/Application\ Support/McAfee*
     rm -rf /usr/local/McAfee
     rm -rf /Library/Startup\ Items/cma
-fi
-
-if yn "Remove Default Account User Pictures?"; then
-    rm -rf /Library/User\ Pictures
-fi
-
-if yn "Remove Screen Savers?"; then
-    rm -rf /Library/Screen\ Savers
 fi
