@@ -76,3 +76,7 @@ if yn "Remove McAfee? (DON'T)"; then
     rm -rf /usr/local/McAfee
     rm -rf /Library/Startup\ Items/cma
 fi
+
+if yn "Remove Default Account User Pictures?"; then
+    rm -rf /Library/User\ Pictures
+fi
