@@ -25,6 +25,10 @@ if yn "Purge OS help files and documentation?"; then
     rm -rf /Library/Documentation/*
 fi
 
+if yn "Remove Dashboard widgets?"; then
+    rm -rf /Library/Widgets
+fi
+
 if yn "Remove Microsoft Silverlight?"; then
     rm -rf /Applications/Microsoft\ Silverlight
 fi
