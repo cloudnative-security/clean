@@ -81,6 +81,6 @@ if yn "Remove Default Account User Pictures?"; then
     rm -rf /Library/User\ Pictures
 fi
 
-if yn "Remove Screensavers?"; then
-    rm -rf /Library/Screensavers
+if yn "Remove Screen Savers?"; then
+    rm -rf /Library/Screen\ Savers
 fi
