@@ -64,5 +64,6 @@ if yn "Remove McAfee? (DON'T)"; then
     rm -rf /Applications/McAfee*
     rm -rf /Library/McAfee*
     rm -rf /Library/Application\ Support/McAfee*
+    rm -rf /usr/local/McAfee
     rm -rf /Library/Startup\ Items/cma
 fi
