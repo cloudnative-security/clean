@@ -37,7 +37,11 @@ if yn "Remove Photo Booth library?"; then
     if yn "Dump Photo Booth library on desktop for you to sort out?"; then
         mv /Users/$user/Pictures/Photo\ Booth\ Library/Pictures /Users/$user/Desktop/photo_booth
     fi
-    rm -rf /Users/*/Photos/{Photo\ Booth\ Library,Photos\ Library}
+    rm -rf /Users/$user/Pictures/{Photo\ Booth\ Library}
+fi
+
+if yn "Remove Photos library?"; then
+    rm -rf /Users/$user/Pictures/Photos\ Library
 fi
 
 # TODO: Optionally remove McAfee
