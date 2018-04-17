@@ -65,6 +65,10 @@ if yn "Remove Photos library?"; then
     rm -rf /Users/$user/Pictures/Photos\ Library
 fi
 
+if yn "Remove Microsoft Auto Update and Error Reporter?"; then
+    rm -rf /Library/Application\ Support/Microsoft
+fi
+
 if yn "Remove McAfee? (DON'T)"; then
     rm -rf /Applications/McAfee*
     rm -rf /Library/McAfee*
