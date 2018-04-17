@@ -7,4 +7,6 @@ rm -rf /Applications/Microsoft\ Silverlight
 
 rm -rf /Library/iTunes
 
+rm -rf /Library/Desktop\ Pictures
+
 # TODO: Optionally remove McAfee
