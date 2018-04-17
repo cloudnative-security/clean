@@ -14,6 +14,8 @@ if [[ $(id -u) -ne 0 ]]; then
     exit 1
 fi
 
+user=$(stat -f "%Su" /dev/console) # Get user currently logged in (in GUI).
+
 if yn "Remove musical files (such as GarageBand, Logic loops)?"; then
     rm -rf /Library/Application\ Support/{Logic,GarageBand}
     rm -rf /Applications/GarageBand.app
@@ -31,7 +33,10 @@ if yn "Purge factory desktop pictures?"; then
     rm -rf /Library/Desktop\ Pictures
 fi
 
-if yn "Remove Photo libraries?"; then
+if yn "Remove Photo Booth library?"; then
+    if yn "Dump Photo Booth library on desktop for you to sort out?"; then
+        mv /Users/$user/Pictures/Photo\ Booth\ Library/Pictures /Users/$user/Desktop/photo_booth
+    fi
     rm -rf /Users/*/Photos/{Photo\ Booth\ Library,Photos\ Library}
 fi
 
