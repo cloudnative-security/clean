@@ -22,7 +22,12 @@ if yn "Remove musical files (such as GarageBand, Logic loops)?"; then
 fi
 
 if yn "Purge OS help files and documentation?"; then
-    rm -rf /Library/Documentation/*
+    rm -rf /Library/Documentation
+fi
+
+if yn "Purge all Adobe products? (Careful!)"; then
+    rm -rf /Applications/Adobe*
+    rm -rf /Library/Application\ Support/Adobe
 fi
 
 if yn "Remove Dashboard widgets?"; then
