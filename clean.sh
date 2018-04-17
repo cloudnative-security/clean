@@ -49,6 +49,7 @@ fi
 yn "Remove Photos library?" && rm -rf /Users/$user/Pictures/Photos\ Library
 yn "Remove Microsoft Auto Update and Error Reporter?" && rm -rf /Library/Application\ Support/Microsoft
 yn "Remove synthesized voices?" && rm -rf /System/Library/Speech
+yn "Remove BBEdit?" && rm -rf /Applications/BBEdit.app
 
 if yn "Remove McAfee? (DON'T)"; then
     rm -rf /Applications/McAfee*
