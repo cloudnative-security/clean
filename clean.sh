@@ -48,4 +48,7 @@ if yn "Remove Photos library?"; then
     rm -rf /Users/$user/Pictures/Photos\ Library
 fi
 
-# TODO: Optionally remove McAfee
+if yn "Remove McAfee? (DON'T)"; then
+    rm -rf /Applications/McAfee*
+    rm -rf /Library/McAfee*
+    rm -rf /Library/Application\ Support/McAfee*
