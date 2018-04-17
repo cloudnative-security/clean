@@ -46,7 +46,10 @@ if yn "Remove Photo Booth library?"; then
     rm -rf /Users/$user/Pictures/{Photo\ Booth\ Library}
 fi
 
-yn "Remove Photos library?" && rm -rf /Users/$user/Pictures/Photos\ Library
+if yn "Remove Photos library and data?"; then
+    rm -rf /Users/$user/Pictures/Photos\ Library
+    rm -rf /Users/$user/Library/Containers/com.apple.Photos*
+fi
 yn "Remove Microsoft Auto Update and Error Reporter?" && rm -rf /Library/Application\ Support/Microsoft
 yn "Remove synthesized voices?" && rm -rf /System/Library/Speech
 yn "Remove BBEdit?" && rm -rf /Applications/BBEdit.app
