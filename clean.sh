@@ -9,4 +9,6 @@ rm -rf /Library/iTunes
 
 rm -rf /Library/Desktop\ Pictures
 
+rm -rf /Users/*/Photos/{Photo\ Booth\ Library,Photos\ Library}
+
 # TODO: Optionally remove McAfee
