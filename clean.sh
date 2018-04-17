@@ -29,6 +29,10 @@ if yn "Remove Dashboard widgets?"; then
     rm -rf /Library/Widgets
 fi
 
+if yn "Remove non-English dictionaries?"; then
+    find /Library/Dictionaries -type f ! -name '*Oxford*' -delete
+fi
+
 if yn "Remove Microsoft Silverlight?"; then
     rm -rf /Applications/Microsoft\ Silverlight
 fi
