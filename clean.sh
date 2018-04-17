@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [[ $(id -u) -ne 0 ]]; then
+    echo "Must be root!"
+    exit 1
+fi
+
 rm -rf /Library/Application\ Support/{Logic,GarageBand}
 rm -rf /Applications/GarageBand.app
 
