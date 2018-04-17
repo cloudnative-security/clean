@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+function yn {
+    read -p "$1? [y/n] " reply
+    if [[ $reply =~ ^[Yy] ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 if [[ $(id -u) -ne 0 ]]; then
     echo "Must be root!"
     exit 1
