@@ -21,6 +21,10 @@ if yn "Remove musical files (such as GarageBand, Logic loops)?"; then
     rm -rf /Applications/GarageBand.app
 fi
 
+if yn "Purge OS help files and documentation?"; then
+    rm -rf /Library/Documentation/*
+fi
+
 if yn "Remove Microsoft Silverlight?"; then
     rm -rf /Applications/Microsoft\ Silverlight
 fi
