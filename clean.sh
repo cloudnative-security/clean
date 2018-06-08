@@ -56,6 +56,8 @@ yn "Remove BBEdit?" && rm -rf /Applications/BBEdit.app
 
 yn "Entering danger zone! Remaining objects should generally not be removed. Exit?" && exit
 
+yn "Disable WiFi?" && networksetup -setairportpower airport off
+
 if yn "Remove McAfee?"; then
     rm -rf /Applications/McAfee*
     rm -rf /Library/McAfee*
