@@ -65,3 +65,5 @@ if yn "Remove McAfee?"; then
     rm -rf /usr/local/McAfee
     rm -rf /Library/Startup\ Items/cma
 fi
+
+networksetup -setairportpower airport on
