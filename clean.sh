@@ -71,4 +71,9 @@ if yn "Remove JAMF?"; then
     rm -rf /Library/Application\ Support/JAMF
 fi
 
+if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
+    rm -rf /Applications/VitalSource\ Bookshelf.app
+    rm -rf /Users/$user/VitalSource\ Bookshelf
+fi
+
 networksetup -setairportpower airport on
