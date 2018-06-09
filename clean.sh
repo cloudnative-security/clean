@@ -58,6 +58,11 @@ yn "Entering danger zone! Remaining objects should generally not be removed. Exi
 
 yn "Disable WiFi?" && networksetup -setairportpower airport off
 
+if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
+    rm -rf /Applications/VitalSource\ Bookshelf.app
+    rm -rf /Users/$user/VitalSource\ Bookshelf
+fi
+
 if yn "Remove McAfee?"; then
     rm -rf /Applications/McAfee*
     rm -rf /Library/McAfee*
@@ -66,14 +71,15 @@ if yn "Remove McAfee?"; then
     rm -rf /Library/Startup\ Items/cma
 fi
 
+if yn "Remove Barracuda?"; then
+    rm -rf /Library/Application Support/Barracuda\ WSA
+    rm -rf /Library/Extensions/BarracudaWSA.kext
+    rm -rf /Library/Logs/BarracudaWSA*
+fi
+
 if yn "Remove JAMF?"; then
     for _ in {1..8}; do killall jamf jamfAgent 2>/dev/null; done
     rm -rf /Library/Application\ Support/JAMF
-fi
-
-if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
-    rm -rf /Applications/VitalSource\ Bookshelf.app
-    rm -rf /Users/$user/VitalSource\ Bookshelf
 fi
 
 networksetup -setairportpower airport on
