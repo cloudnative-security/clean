@@ -66,4 +66,9 @@ if yn "Remove McAfee?"; then
     rm -rf /Library/Startup\ Items/cma
 fi
 
+if yn "Remove JAMF?"; then
+    for _ in {1..8}; do killall jamf jamfAgent 2>/dev/null; done
+    rm -rf /Library/Application\ Support/JAMF
+fi
+
 networksetup -setairportpower airport on
