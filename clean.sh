@@ -69,7 +69,7 @@ yn "Temporarily disable WiFi?" && networksetup -setairportpower airport off >/de
 if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
     rm -rf /Applications/VitalSource\ Bookshelf.app
     rm -rf /Users/$user/Books/VitalSource\ Bookshelf
-    is_empty /User/$user/Books && rm -rf /Users/$user/Books
+    is_empty /Users/$user/Books && rm -rf /Users/$user/Books
 fi
 
 if yn "Remove McAfee?"; then
