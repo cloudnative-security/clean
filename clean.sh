@@ -10,7 +10,11 @@ function yn {
 }
 
 function is_empty {
-    return [[ -z "$(ls $1)" ]]
+    if [[ -z "$(ls "$1")" ]]; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 if [[ $(id -u) -ne 0 ]]; then
