@@ -95,6 +95,8 @@ if yn "Are you comfortable with removing important security systems?"; then
 fi
 
 sip_apps=(
+    # Each of these is listed as a directory protected by SIP,
+    # list is present at /System/Library/Sandbox/rootless.conf
     /Applications/App\ Store.app
     /Applications/Automator.app
     /Applications/Calculator.app
