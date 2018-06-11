@@ -9,6 +9,10 @@ function yn {
     fi
 }
 
+function is_empty {
+    return [[ -z "$(ls $1)" ]]
+}
+
 if [[ $(id -u) -ne 0 ]]; then
     echo "Must be root!"
     exit 1
@@ -61,7 +65,7 @@ yn "Temporarily disable WiFi?" && networksetup -setairportpower airport off >/de
 if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
     rm -rf /Applications/VitalSource\ Bookshelf.app
     rm -rf /Users/$user/Books/VitalSource\ Bookshelf
-    [[ -z "$(ls /User/$user/Books)" ]] && rm -rf /Users/$user/Books
+    is_empty /User/$user/Books && rm -rf /Users/$user/Books
 fi
 
 if yn "Remove McAfee?"; then
