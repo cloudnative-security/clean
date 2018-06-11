@@ -43,7 +43,7 @@ if yn "Remove Photo Booth library?"; then
     if yn "Dump Photo Booth library on desktop for you to sort out?"; then
         mv /Users/$user/Pictures/Photo\ Booth\ Library/Pictures /Users/$user/Desktop/photo_booth
     fi
-    rm -rf /Users/$user/Pictures/{Photo\ Booth\ Library}
+    rm -rf /Users/$user/Pictures/Photo\ Booth\ Library
 fi
 
 if yn "Remove Photos library and data?"; then
@@ -60,7 +60,7 @@ yn "Temporarily disable WiFi?" && networksetup -setairportpower airport off >/de
 
 if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
     rm -rf /Applications/VitalSource\ Bookshelf.app
-    rm -rf /Users/$user/VitalSource\ Bookshelf
+    rm -rf /Users/$user/Books/VitalSource\ Bookshelf
 fi
 
 if yn "Remove McAfee?"; then
