@@ -95,38 +95,40 @@ if yn "Are you comfortable with removing important security systems?"; then
 fi
 
 sip_apps=(
-    # Each of these is listed as a directory protected by SIP,
-    # list is present at /System/Library/Sandbox/rootless.conf
+    # Each of these is listed as a directory protected by SIP
+    # (list present at /System/Library/Sandbox/rootless.conf).
+    # Other users of this script are encouraged to (un)comment
+    # applications as desired to fit their needs.
     /Applications/App\ Store.app
     /Applications/Automator.app
-    /Applications/Calculator.app
+    #/Applications/Calculator.app
     /Applications/Calendar.app
     /Applications/Chess.app
     /Applications/Contacts.app
     /Applications/Dashboard.app
-    /Applications/Dictionary.app
+    #/Applications/Dictionary.app
     /Applications/DVD\ Player.app
     /Applications/FaceTime.app
-    /Applications/Font\ Book.app
+    #/Applications/Font\ Book.app
     /Applications/Game\ Center.app
     /Applications/Image\ Capture.app
     /Applications/Launchpad.app
     /Applications/Mail.app
     /Applications/Maps.app
     /Applications/Messages.app
-    /Applications/Mission\ Control.app
+    #/Applications/Mission\ Control.app
     /Applications/Notes.app
-    /Applications/Photo\ Booth.app
+    #/Applications/Photo\ Booth.app
     /Applications/Photos.app
-    /Applications/Preview.app
-    /Applications/QuickTime\ Player.app
+    #/Applications/Preview.app
+    #/Applications/QuickTime\ Player.app
     /Applications/Reminders.app
-    /Applications/Safari.app
+    #/Applications/Safari.app
     /Applications/Stickies.app
-    /Applications/System\ Preferences.app
+    #/Applications/System\ Preferences.app
     /Applications/TextEdit.app
     /Applications/Time\ Machine.app
-    /Applications/Utilities/Activity\ Monitor.app
+    #/Applications/Utilities/Activity\ Monitor.app
     /Applications/Utilities/AirPort\ Utility.app
     /Applications/Utilities/Audio\ MIDI\ Setup.app
     /Applications/Utilities/Bluetooth\ File\ Exchange.app
@@ -134,15 +136,16 @@ sip_apps=(
     /Applications/Utilities/ColorSync\ Utility.app
     /Applications/Utilities/Console.app
     /Applications/Utilities/Digital\ Color\ Meter.app
-    /Applications/Utilities/Disk\ Utility.app
+    #/Applications/Utilities/Disk\ Utility.app
     /Applications/Utilities/Feedback\ Assistant.app
-    /Applications/Utilities/Grab.app
+    # TODO: Unsure if this is required to take screenshots conventionally.
+    #/Applications/Utilities/Grab.app
     /Applications/Utilities/Grapher.app
-    /Applications/Utilities/Keychain\ Access.app
+    #/Applications/Utilities/Keychain\ Access.app
     /Applications/Utilities/Migration\ Assistant.app
-    /Applications/Utilities/Script\ Editor.app
+    #/Applications/Utilities/Script\ Editor.app
     /Applications/Utilities/System\ Information.app
-    /Applications/Utilities/Terminal.app
+    #/Applications/Utilities/Terminal.app
     /Applications/Utilities/VoiceOver\ Utility.app
 )
 if yn "Have you disabled System Integrity Protection (SIP)? (Requires recovery access.)"; then
