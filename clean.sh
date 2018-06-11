@@ -93,3 +93,7 @@ if yn "Remove JAMF?"; then
 fi
 
 networksetup -setairportpower airport on >/dev/null
+
+if yn "Have you disabled System Integrity Protection (SIP)? (Requires recovery access.)"; then
+    
+fi
