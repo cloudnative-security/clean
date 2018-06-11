@@ -48,7 +48,7 @@ yn "Remove Default Account User Pictures?" && rm -rf /Library/User\ Pictures
 yn "Remove Screen Savers?" && rm -rf /Library/Screen\ Savers
 
 if yn "Remove Photo Booth library?"; then
-    if yn "Dump Photo Booth library on desktop for you to sort out?"; then
+    if ! is_empty /Users/$user/Pictures/Photo\ Booth\ Library/Pictures && yn "Dump Photo Booth library on desktop for you to sort out?"; then
         mv /Users/$user/Pictures/Photo\ Booth\ Library/Pictures /Users/$user/Desktop/photo_booth
     fi
     rm -rf /Users/$user/Pictures/Photo\ Booth\ Library
