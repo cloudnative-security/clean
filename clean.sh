@@ -62,7 +62,7 @@ yn "Remove Microsoft Auto Update and Error Reporter?" && rm -rf /Library/Applica
 yn "Remove synthesized voices?" && rm -rf /System/Library/Speech
 yn "Remove BBEdit?" && rm -rf /Applications/BBEdit.app
 
-yn "Entering danger zone! Remaining objects should generally not be removed. Exit?" && exit
+yn "Entering danger zone! Remaining objects should generally not be removed. Continue?" || exit
 
 yn "Temporarily disable WiFi?" && networksetup -setairportpower airport off >/dev/null
 
