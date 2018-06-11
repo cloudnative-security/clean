@@ -29,7 +29,7 @@ if yn "Remove non-English local dictionaries?"; then
     if yn "Remove all local dictionaries?"; then
         rm -rf /Library/Dictionaries
     else
-        find /Library/Dictionaries -type f ! -name '*Oxford*' -delete
+        find /Library/Dictionaries -type f ! -name 'Apple Dictionary.dictionary' -delete
     fi
 fi
 
