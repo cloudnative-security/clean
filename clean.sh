@@ -62,37 +62,37 @@ yn "Remove Microsoft Auto Update and Error Reporter?" && rm -rf /Library/Applica
 yn "Remove synthesized voices?" && rm -rf /System/Library/Speech
 yn "Remove BBEdit?" && rm -rf /Applications/BBEdit.app
 
-yn "Entering danger zone! Remaining objects should generally not be removed. Continue?" || exit
+if yn "Are you comfortable with removing important security systems?"; then
+    yn "Temporarily disable WiFi?" && networksetup -setairportpower airport off >/dev/null
 
-yn "Temporarily disable WiFi?" && networksetup -setairportpower airport off >/dev/null
+    if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
+        rm -rf /Applications/VitalSource\ Bookshelf.app
+        rm -rf /Users/$user/Books/VitalSource\ Bookshelf
+        is_empty /Users/$user/Books && rm -rf /Users/$user/Books
+    fi
 
-if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
-    rm -rf /Applications/VitalSource\ Bookshelf.app
-    rm -rf /Users/$user/Books/VitalSource\ Bookshelf
-    is_empty /Users/$user/Books && rm -rf /Users/$user/Books
+    if yn "Remove McAfee?"; then
+        rm -rf /Applications/McAfee*
+        rm -rf /Library/McAfee*
+        rm -rf /Library/Application\ Support/McAfee*
+        rm -rf /usr/local/McAfee
+        rm -rf /Library/Startup\ Items/cma
+        rm -rf /Quarantine
+    fi
+
+    if yn "Remove Barracuda?"; then
+        rm -rf /Library/Application Support/Barracuda\ WSA
+        rm -rf /Library/Extensions/BarracudaWSA.kext
+        rm -rf /Library/Logs/BarracudaWSA*
+    fi
+
+    if yn "Remove JAMF?"; then
+        for _ in {1..8}; do killall jamf jamfAgent 2>/dev/null; done
+        rm -rf /Library/Application\ Support/JAMF
+    fi
+
+    networksetup -setairportpower airport on >/dev/null
 fi
-
-if yn "Remove McAfee?"; then
-    rm -rf /Applications/McAfee*
-    rm -rf /Library/McAfee*
-    rm -rf /Library/Application\ Support/McAfee*
-    rm -rf /usr/local/McAfee
-    rm -rf /Library/Startup\ Items/cma
-    rm -rf /Quarantine
-fi
-
-if yn "Remove Barracuda?"; then
-    rm -rf /Library/Application Support/Barracuda\ WSA
-    rm -rf /Library/Extensions/BarracudaWSA.kext
-    rm -rf /Library/Logs/BarracudaWSA*
-fi
-
-if yn "Remove JAMF?"; then
-    for _ in {1..8}; do killall jamf jamfAgent 2>/dev/null; done
-    rm -rf /Library/Application\ Support/JAMF
-fi
-
-networksetup -setairportpower airport on >/dev/null
 
 sip_apps=(
     /Applications/App\ Store.app
