@@ -78,6 +78,7 @@ if yn "Remove McAfee?"; then
     rm -rf /Library/Application\ Support/McAfee*
     rm -rf /usr/local/McAfee
     rm -rf /Library/Startup\ Items/cma
+    rm -rf /Quarantine
 fi
 
 if yn "Remove Barracuda?"; then
