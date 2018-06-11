@@ -144,5 +144,7 @@ sip_apps=(
     /Applications/Utilities/VoiceOver\ Utility.app
 )
 if yn "Have you disabled System Integrity Protection (SIP)? (Requires recovery access.)"; then
-
+    for app in "${sip_apps[@]}"; do
+        yn "Delete $app?" && rm -rf $app
+    done
 fi
