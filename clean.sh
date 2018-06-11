@@ -56,7 +56,7 @@ yn "Remove BBEdit?" && rm -rf /Applications/BBEdit.app
 
 yn "Entering danger zone! Remaining objects should generally not be removed. Exit?" && exit
 
-yn "Disable WiFi?" && networksetup -setairportpower airport off
+yn "Disable WiFi?" && networksetup -setairportpower airport off >/dev/null
 
 if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
     rm -rf /Applications/VitalSource\ Bookshelf.app
@@ -82,4 +82,4 @@ if yn "Remove JAMF?"; then
     rm -rf /Library/Application\ Support/JAMF
 fi
 
-networksetup -setairportpower airport on
+networksetup -setairportpower airport on >/dev/null
