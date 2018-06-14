@@ -105,8 +105,10 @@ if yn "Are you comfortable with removing important security systems?"; then
                /Quarantine
     fi
 
-    if yn "Remove ARD?"; then
-        rm -rf /System/Library/CoreServices/RemoteManagement/ARDAgent.app
+    if yn "Disable ARD?"; then
+        # To totally remove (requires SIP disabled):
+        #rm -rf /System/Library/CoreServices/RemoteManagement/ARDAgent.app
+        /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off
     fi
 
     if yn "Remove Barracuda?"; then
@@ -148,11 +150,11 @@ if yn "Are you comfortable with removing important security systems?"; then
     networksetup -setairportpower airport on >/dev/null
 fi
 
+# Each of these is listed as a directory protected by SIP
+# (list present at /System/Library/Sandbox/rootless.conf).
+# Other users of this script are encouraged to (un)comment
+# applications as desired to fit their needs.
 sip_apps=(
-    # Each of these is listed as a directory protected by SIP
-    # (list present at /System/Library/Sandbox/rootless.conf).
-    # Other users of this script are encouraged to (un)comment
-    # applications as desired to fit their needs.
     /Applications/App\ Store.app
     /Applications/Automator.app
     #/Applications/Calculator.app
