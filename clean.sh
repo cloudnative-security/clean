@@ -110,9 +110,11 @@ if yn "Are you comfortable with removing important security systems?"; then
     fi
 
     if yn "Remove Barracuda?"; then
-        rm -rf /Library/Application Support/Barracuda\ WSA \
+        rm -rf /Library/Application\ Support/Barracuda\ WSA \
                /Library/Extensions/BarracudaWSA.kext \
                /Library/Logs/BarracudaWSA*
+        echo "Barracuda restrictions will disappear after restart."
+        # TODO: Disable without restart
     fi
 
     if yn "Remove JAMF?"; then
