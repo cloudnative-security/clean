@@ -74,12 +74,18 @@ if yn "Are you comfortable with removing important security systems?"; then
                /Users/$user/Library/Group\ Containers/*.ms
     fi
 
-    if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
+    if yn "Remove VitalSource Bookshelf and installed textbooks?"; then
         rm -rf /Applications/VitalSource\ Bookshelf.app \
                /Users/$user/Books/{VitalSource\ Bookshelf,Icon*} \
                /Users/Shared/Books/{VitalSource\ Bookshelf,Icon*}
         is_empty /Users/$user/Books && rm -rf /Users/$user/Books
         is_empty /Users/Shared/Books && rm -rf /Users/Shared/Books
+    fi
+
+    if yn "Remove Logger Pro?"; then
+        rm -rf /Applications/Logger\ Pro\ 3/ \
+               /Library/Application\ Support/National\ Instruments \
+               /Users/$user/Library/Application\ Support/Logger\ Pro \
     fi
 
     if yn "Remove Lockdown Browser?"; then
