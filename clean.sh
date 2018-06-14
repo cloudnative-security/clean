@@ -71,6 +71,10 @@ if yn "Are you comfortable with removing important security systems?"; then
         is_empty /Users/$user/Books && rm -rf /Users/$user/Books
     fi
 
+    if yn "Remove Lockdown Browser?"; then
+        rm -rf /Applications/Lockdown\ Browser.app
+    fi
+
     if yn "Remove McAfee?"; then
         rm -rf /Applications/McAfee*
         rm -rf /Library/McAfee*
