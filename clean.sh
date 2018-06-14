@@ -17,6 +17,11 @@ function is_empty {
     fi
 }
 
+function userdel {
+    dscl localhost delete /Local/Default/Users/$1
+    rm -rf /Users/$1
+}
+
 if [[ $(id -u) -ne 0 ]]; then
     echo "Must be root!"
     exit 1
