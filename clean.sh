@@ -67,6 +67,12 @@ yn "Remove Microsoft Auto Update and Error Reporter?" && rm -rf /Library/Applica
 yn "Remove synthesized voices?" && rm -rf /System/Library/Speech
 yn "Remove BBEdit?" && rm -rf /Applications/BBEdit.app
 
+if yn "Clear crash reports and logs?"; then
+    rm -rf /Library/Application\ Support/CrashReporter/*
+    rm -rf /Library/Logs/*
+    rm -rf /private/var/log/*
+fi
+
 if yn "Are you comfortable with removing important security systems?"; then
     yn "Temporarily disable WiFi?" && networksetup -setairportpower airport off >/dev/null
 
