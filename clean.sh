@@ -2,19 +2,11 @@
 
 function yn {
     read -p "$1 [y/n] " reply
-    if [[ $reply =~ ^[Yy] ]]; then
-        return 0
-    else
-        return 1
-    fi
+    [[ $reply =~ ^[Yy] ]]
 }
 
 function is_empty {
-    if [[ -z "$(ls "$1")" ]]; then
-        return 0
-    else
-        return 1
-    fi
+    [[ -z "$(ls "$1")" ]]
 }
 
 function userdel {
