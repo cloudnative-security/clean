@@ -70,6 +70,16 @@ yn "Remove BBEdit?" && rm -rf /Applications/BBEdit.app
 if yn "Are you comfortable with removing important security systems?"; then
     yn "Temporarily disable WiFi?" && networksetup -setairportpower airport off >/dev/null
 
+    if yn "Remove Microsoft Office?"; then
+        office_dirs=(
+            "/Applications/Microsoft Office 2011"
+            "/Users/$user/Library/Containers/com.microsoft.*"
+            "/Users/$user/Library/Group Containers/*.ms"
+            "/Users/$user/Library/Group Containers/*.Office*"
+        )
+        rm -rf "${office_dirs[@]}"
+    fi
+
     if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
         rm -rf /Applications/VitalSource\ Bookshelf.app
         rm -rf /Users/$user/Books/{VitalSource\ Bookshelf,Icon*}
