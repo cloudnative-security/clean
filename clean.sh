@@ -83,47 +83,47 @@ if yn "Are you comfortable with removing important security systems?"; then
     fi
 
     if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
-        rm -rf /Applications/VitalSource\ Bookshelf.app
-        rm -rf /Users/$user/Books/{VitalSource\ Bookshelf,Icon*}
-        rm -rf /Users/Shared/Books/{VitalSource\ Bookshelf,Icon*}
+        rm -rf /Applications/VitalSource\ Bookshelf.app \
+               /Users/$user/Books/{VitalSource\ Bookshelf,Icon*} \
+               /Users/Shared/Books/{VitalSource\ Bookshelf,Icon*}
         is_empty /Users/$user/Books && rm -rf /Users/$user/Books
         is_empty /Users/Shared/Books && rm -rf /Users/Shared/Books
     fi
 
     if yn "Remove Lockdown Browser?"; then
-        rm -rf /Applications/Lockdown\ Browser.app
-        rm /private/var/db/receipts/com.respondus.LockdownBrowser*
-        rm /Users/*/Library/Application\ Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.respondus.lockdownbrowser.sfl
+        rm -rf /Applications/Lockdown\ Browser.app \
+               /private/var/db/receipts/com.respondus.LockdownBrowser* \
+               /Users/*/Library/Application\ Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.respondus.lockdownbrowser.sfl
     fi
 
     if yn "Remove McAfee?"; then
-        rm -rf /Applications/McAfee*
-        rm -rf /Library/McAfee*
-        rm -rf /Library/Application\ Support/McAfee*
-        rm -rf /usr/local/McAfee
-        rm -rf /Library/Startup\ Items/cma
-        rm -rf /Quarantine
+        rm -rf /Applications/McAfee* \
+               /Library/McAfee* \
+               /Library/Application\ Support/McAfee* \
+               /usr/local/McAfee \
+               /Library/Startup\ Items/cma \
+               /Quarantine
     fi
 
     if yn "Remove Barracuda?"; then
-        rm -rf /Library/Application Support/Barracuda\ WSA
-        rm -rf /Library/Extensions/BarracudaWSA.kext
-        rm -rf /Library/Logs/BarracudaWSA*
+        rm -rf /Library/Application Support/Barracuda\ WSA \
+               /Library/Extensions/BarracudaWSA.kext \
+               /Library/Logs/BarracudaWSA*
     fi
 
     if yn "Remove JAMF?"; then
         for _ in {1..8}; do killall jamf jamfAgent 2>/dev/null; done
-        rm /usr/local/bin/jamf*
-        rm /Library/LaunchAgents/com.jamfsoftware* /Library/LaunchDaemons/com.jamfsoftware*
-        rm /private/var/db/receipts/com.jamfsoftware*
-        rm -rf /private/var/root/Library/{Caches,Cookies,Preferences}/com.jamfsoftware*
-        rm -rf /private/var/run/jamf
-        rm -rf /Users/$user/Library/Application\ Support/com.apple.sharedfilelist/*/com.jamfsoftware*
-        rm -rf /Users/$user/Library/Preferences/com.jamfsoftware*
-        rm -rf /Library/Preferences/com.jamfsoftware*
-        rm -rf /Users/boesene/Library/Logs/JAMF
-        rm -rf /usr/local/jamf
-        rm -rf /Library/Application\ Support/JAMF
+        rm -rf /usr/local/bin/jamf* \
+               /Library/LaunchAgents/com.jamfsoftware* /Library/LaunchDaemons/com.jamfsoftware* \
+               /private/var/db/receipts/com.jamfsoftware* \
+               /private/var/root/Library/{Caches,Cookies,Preferences}/com.jamfsoftware* \
+               /private/var/run/jamf \
+               /Users/$user/Library/Application\ Support/com.apple.sharedfilelist/*/com.jamfsoftware* \
+               /Users/$user/Library/Preferences/com.jamfsoftware* \
+               /Library/Preferences/com.jamfsoftware* \
+               /Users/boesene/Library/Logs/JAMF \
+               /usr/local/jamf \
+               /Library/Application\ Support/JAMF
     fi
 
     if yn "Remove FCCPS accounts?"; then
