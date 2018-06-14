@@ -203,6 +203,10 @@ sip_apps=(
     /Applications/Utilities/System\ Information.app
     #/Applications/Utilities/Terminal.app
     /Applications/Utilities/VoiceOver\ Utility.app
+
+    # Apple Remote Desktop Agent: special, but annoying
+    # Disabled above, but we can't remove it with SIP on
+    /System/Library/CoreServices/RemoteManagement/ARDAgent.app
 )
 if csrutil status | grep --quiet "enabled"; then
     echo "SIP enabled, skipping clearout of /Applications."
