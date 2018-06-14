@@ -71,13 +71,9 @@ if yn "Are you comfortable with removing important security systems?"; then
     yn "Temporarily disable WiFi?" && networksetup -setairportpower airport off >/dev/null
 
     if yn "Remove Microsoft Office?"; then
-        office_dirs=(
-            "/Applications/Microsoft Office 2011"
-            "/Users/$user/Library/Containers/com.microsoft.*"
-            "/Users/$user/Library/Group Containers/*.ms"
-            "/Users/$user/Library/Group Containers/*.Office*"
-        )
-        rm -rf "${office_dirs[@]}"
+        rm -rf /Applications/Microsoft\ Office\ 2011 \
+               /Users/$user/Library/Containers/com.microsoft.* \
+               /Users/$user/Library/Group\ Containers/*.ms
     fi
 
     if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
