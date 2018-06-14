@@ -85,13 +85,14 @@ if yn "Are you comfortable with removing important security systems?"; then
     if yn "Remove Logger Pro?"; then
         rm -rf /Applications/Logger\ Pro\ 3/ \
                /Library/Application\ Support/National\ Instruments \
-               /Users/$user/Library/Application\ Support/Logger\ Pro \
+               /Users/$user/Library/Application\ Support/Logger\ Pro
     fi
 
     if yn "Remove Lockdown Browser?"; then
         rm -rf /Applications/Lockdown\ Browser.app \
                /private/var/db/receipts/com.respondus.LockdownBrowser* \
-               /Users/*/Library/Application\ Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.respondus.lockdownbrowser.sfl
+               /Users/*/Library/Application\ Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.respondus.lockdownbrowser.sfl \
+               /Users/$user/Library/Application\ Support/Respondus\ LockDown\ Browser
     fi
 
     if yn "Remove McAfee?"; then
