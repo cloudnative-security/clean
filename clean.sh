@@ -110,14 +110,15 @@ if yn "Are you comfortable with removing important security systems?"; then
     fi
 
     if yn "Remove Barracuda?"; then
-        /Library/Application\ Support/Barracuda\ WSA/WSA\ Uninstaller.app/Contents/Resources/uninstall.sh
-        # If you don't trust the official uninstall script, you can use this:
-        #killall wsa_proxy
-        #rm -rf /Library/Application\ Support/Barracuda\ WSA \
-        #       /Library/Extensions/BarracudaWSA.kext \
-        #       /Library/Logs/BarracudaWSA* \
-        #       /Library/PreferencePanes/Barracuda\ WSA* \
-        #       /Library/LaunchDaemons/com.barracuda*
+        # You can find the actual uninstall script here:
+        # /Library/Application Support/Barracuda WSA/WSA Uninstaller.app/Contents/Resources/uninstall.sh
+        # I don't trust it though, so let's do the dirty work ourselves
+        killall wsa_proxy
+        rm -rf /Library/Application\ Support/Barracuda\ WSA \
+               /Library/Extensions/BarracudaWSA.kext \
+               /Library/Logs/BarracudaWSA* \
+               /Library/PreferencePanes/Barracuda\ WSA* \
+               /Library/LaunchDaemons/com.barracuda*
         echo "Barracuda restrictions will disappear after restart."
         # TODO: Disable without restart
     fi
