@@ -103,6 +103,10 @@ if yn "Are you comfortable with removing important security systems?"; then
         /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off
     fi
 
+    if yn "Remove Managed Prefences?"; then
+        rm -rf /Library/Managed\ Preferences
+    fi
+
     if yn "Remove Barracuda?"; then
         # You can find the actual uninstall script here:
         # /Library/Application Support/Barracuda WSA/WSA Uninstaller.app/Contents/Resources/uninstall.sh
