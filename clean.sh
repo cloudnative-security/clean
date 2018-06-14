@@ -105,6 +105,10 @@ if yn "Are you comfortable with removing important security systems?"; then
                /Quarantine
     fi
 
+    if yn "Remove ARD?"; then
+        rm -rf /System/Library/CoreServices/RemoteManagement/ARDAgent.app
+    fi
+
     if yn "Remove Barracuda?"; then
         rm -rf /Library/Application Support/Barracuda\ WSA \
                /Library/Extensions/BarracudaWSA.kext \
