@@ -114,6 +114,15 @@ if yn "Are you comfortable with removing important security systems?"; then
     if yn "Remove JAMF?"; then
         for _ in {1..8}; do killall jamf jamfAgent 2>/dev/null; done
         rm /usr/local/bin/jamf*
+        rm /Library/LaunchAgents/com.jamfsoftware* /Library/LaunchDaemons/com.jamfsoftware*
+        rm /private/var/db/receipts/com.jamfsoftware*
+        rm -rf /private/var/root/Library/{Caches,Cookies,Preferences}/com.jamfsoftware*
+        rm -rf /private/var/run/jamf
+        rm -rf /Users/$user/Library/Application\ Support/com.apple.sharedfilelist/*/com.jamfsoftware*
+        rm -rf /Users/$user/Library/Preferences/com.jamfsoftware*
+        rm -rf /Library/Preferences/com.jamfsoftware*
+        rm -rf /Users/boesene/Library/Logs/JAMF
+        rm -rf /usr/local/jamf
         rm -rf /Library/Application\ Support/JAMF
     fi
 
