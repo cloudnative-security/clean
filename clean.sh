@@ -72,8 +72,8 @@ if yn "Are you comfortable with removing important security systems?"; then
 
     if yn "Remove VitalSource Bookshelf and installed textbooks? (Don't do this during the year.)"; then
         rm -rf /Applications/VitalSource\ Bookshelf.app
-        rm -rf /Users/$user/Books/VitalSource\ Bookshelf
-        rm -rf /Users/Shared/Books/VitalSource\ Bookshelf
+        rm -rf /Users/$user/Books/{VitalSource\ Bookshelf,Icon*}
+        rm -rf /Users/Shared/Books/{VitalSource\ Bookshelf,Icon*}
         is_empty /Users/$user/Books && rm -rf /Users/$user/Books
         is_empty /Users/Shared/Books && rm -rf /Users/Shared/Books
     fi
