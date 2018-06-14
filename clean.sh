@@ -107,6 +107,7 @@ if yn "Are you comfortable with removing important security systems?"; then
 
     if yn "Remove JAMF?"; then
         for _ in {1..8}; do killall jamf jamfAgent 2>/dev/null; done
+        rm /usr/local/bin/jamf*
         rm -rf /Library/Application\ Support/JAMF
     fi
 
