@@ -73,6 +73,8 @@ if yn "Are you comfortable with removing important security systems?"; then
 
     if yn "Remove Lockdown Browser?"; then
         rm -rf /Applications/Lockdown\ Browser.app
+        rm /private/var/db/receipts/com.respondus.LockdownBrowser*
+        rm /Users/*/Library/Application\ Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.respondus.lockdownbrowser.sfl
     fi
 
     if yn "Remove McAfee?"; then
