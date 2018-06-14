@@ -102,6 +102,13 @@ if yn "Are you comfortable with removing important security systems?"; then
         rm -rf /Library/Application\ Support/JAMF
     fi
 
+    if yn "Remove FCCPS accounts?"; then
+        userdel gmtest
+        userdel remotedesktop
+        userdel support
+        userdel admin
+    fi
+
     networksetup -setairportpower airport on >/dev/null
 fi
 
