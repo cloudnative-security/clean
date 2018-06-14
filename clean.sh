@@ -190,7 +190,9 @@ sip_apps=(
     #/Applications/Utilities/Terminal.app
     /Applications/Utilities/VoiceOver\ Utility.app
 )
-if yn "Have you disabled System Integrity Protection (SIP)? (Requires recovery access.)"; then
+if csrutil status | grep --quiet "enabled"; then
+    echo "SIP enabled, skipping clearout of /Applications."
+else
     for app in "${sip_apps[@]}"; do
         yn "Delete $app?" && rm -rf $app
     done
