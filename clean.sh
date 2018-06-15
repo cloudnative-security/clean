@@ -111,6 +111,16 @@ if yn "Are you comfortable with removing important security systems?"; then
         /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off
     fi
 
+    if yn "Leave Active Directory?"; then
+        # dsconfigad requests a username and password of the directory admin to leave the active directory.
+        # Hilariously, however, it will actually accept ANY username and password. The username you give doesn't even
+        # have to be an admin, or even a real user on the domain. If you're root, it doesn't really care.
+        # The only thing that won't happen is removal from the directory on admin's side of things.
+        # But that doesn't really matter.
+        # derflounder.wordpress.com/2013/10/09/force-unbinding-with-dsconfigad-without-using-an-active-directory-admin-account
+        dsconfigad -remove -force -u "user" -p "password"
+    fi
+
     if yn "Remove Managed Preferences?"; then
         rm -rf /Library/Managed\ Preferences
         # Prevent the directory from being recreated
