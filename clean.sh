@@ -111,8 +111,10 @@ if yn "Are you comfortable with removing important security systems?"; then
         /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off
     fi
 
-    if yn "Remove Managed Prefences?"; then
+    if yn "Remove Managed Preferences?"; then
         rm -rf /Library/Managed\ Preferences
+        # Prevent the directory from being recreated
+        ln -s /dev/null /Library/Managed\ Preferences
     fi
 
     if yn "Remove Barracuda?"; then
