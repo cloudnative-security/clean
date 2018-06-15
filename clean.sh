@@ -71,7 +71,8 @@ if yn "Are you comfortable with removing important security systems?"; then
     if yn "Remove Microsoft Office?"; then
         rm -rf /Applications/Microsoft\ Office\ 2011 \
                /Users/$user/Library/Containers/com.microsoft.* \
-               /Users/$user/Library/Group\ Containers/*.ms
+               /Users/$user/Library/Group\ Containers/*.ms \
+               /Library/Preferences/com.microsoft*
     fi
 
     if yn "Remove VitalSource Bookshelf and installed textbooks?"; then
