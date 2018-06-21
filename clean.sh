@@ -15,13 +15,13 @@ function is_empty {
     [[ -z "$(ls "$1")" ]]
 }
 
-function userdel {
-    dscl localhost delete /Local/Default/Users/$1
-    rm -rf /Users/$1
+function delete {
+    rm -rfv $@ >> $logfile
 }
 
-function delete {
-    rm -rf $@ >> $logfile
+function userdel {
+    dscl localhost delete /Local/Default/Users/$1
+    delete /Users/$1
 }
 
 if [[ $(id -u) -ne 0 ]]; then
@@ -32,82 +32,82 @@ fi
 user=$(stat -f "%Su" /dev/console) # Get user currently logged in (in GUI).
 
 if yn "Remove musical files (such as GarageBand, Logic loops)?"; then
-    rm -rf /Library/Application\ Support/{Logic,GarageBand}
-    rm -rf /Applications/GarageBand.app
+    delete /Library/Application\ Support/{Logic,GarageBand}
+    delete /Applications/GarageBand.app
 fi
 
-yn "Purge OS help files and documentation?" && rm -rf /Library/Documentation
-yn "Purge all Adobe products? (Careful!)" && (rm -rf /Applications/Adobe* /Library/Application\ Support/Adobe)
-yn "Remove Dashboard widgets?" && rm -rf /Library/Widgets
+yn "Purge OS help files and documentation?" && delete /Library/Documentation
+yn "Purge all Adobe products? (Careful!)" && (delete /Applications/Adobe* /Library/Application\ Support/Adobe)
+yn "Remove Dashboard widgets?" && delete /Library/Widgets
 
 if yn "Remove non-English local dictionaries?"; then
     if yn "Remove all local dictionaries?"; then
-        rm -rf /Library/Dictionaries
+        delete /Library/Dictionaries
     else
         find /Library/Dictionaries -type f ! -name 'Apple Dictionary.dictionary' -delete
     fi
 fi
 
-yn "Remove Microsoft Silverlight?" && rm -rf /Applications/Microsoft\ Silverlight
-yn "Remove iTunes files?" && rm -rf /Library/iTunes
-yn "Remove factory desktop pictures?" && rm -rf /Library/Desktop\ Pictures
-yn "Remove Default Account User Pictures?" && rm -rf /Library/User\ Pictures
-yn "Remove Screen Savers?" && rm -rf /Library/Screen\ Savers
+yn "Remove Microsoft Silverlight?" && delete /Applications/Microsoft\ Silverlight
+yn "Remove iTunes files?" && delete /Library/iTunes
+yn "Remove factory desktop pictures?" && delete /Library/Desktop\ Pictures
+yn "Remove Default Account User Pictures?" && delete /Library/User\ Pictures
+yn "Remove Screen Savers?" && delete /Library/Screen\ Savers
 
 if yn "Remove Photo Booth library?"; then
     if ! is_empty /Users/$user/Pictures/Photo\ Booth\ Library/Pictures && yn "Dump Photo Booth library on desktop for you to sort out?"; then
         mv /Users/$user/Pictures/Photo\ Booth\ Library/Pictures /Users/$user/Desktop/photo_booth
     fi
-    rm -rf /Users/$user/Pictures/Photo\ Booth\ Library
+    delete /Users/$user/Pictures/Photo\ Booth\ Library
 fi
 
 if yn "Remove Photos library and data?"; then
-    rm -rf /Users/$user/Pictures/Photos\ Library
-    rm -rf /Users/$user/Library/Containers/com.apple.Photos*
+    delete /Users/$user/Pictures/Photos\ Library
+    delete /Users/$user/Library/Containers/com.apple.Photos*
 fi
-yn "Remove Microsoft Auto Update and Error Reporter?" && rm -rf /Library/Application\ Support/Microsoft
-yn "Remove synthesized voices?" && rm -rf /System/Library/Speech
-yn "Remove BBEdit?" && rm -rf /Applications/BBEdit.app
+yn "Remove Microsoft Auto Update and Error Reporter?" && delete /Library/Application\ Support/Microsoft
+yn "Remove synthesized voices?" && delete /System/Library/Speech
+yn "Remove BBEdit?" && delete /Applications/BBEdit.app
 
 if yn "Clear crash reports and logs?"; then
-    rm -rf /Library/Application\ Support/CrashReporter/*
-    rm -rf /Library/Logs/*
-    rm -rf /private/var/log/*
+    delete /Library/Application\ Support/CrashReporter/*
+    delete /Library/Logs/*
+    delete /private/var/log/*
 fi
 
 if yn "Are you comfortable with removing important security systems?"; then
     yn "Temporarily disable WiFi?" && networksetup -setairportpower airport off >/dev/null
 
     if yn "Remove Microsoft Office?"; then
-        rm -rf /Applications/Microsoft\ Office\ 2011 \
+        delete /Applications/Microsoft\ Office\ 2011 \
                /Users/$user/Library/Containers/com.microsoft.* \
                /Users/$user/Library/Group\ Containers/*.ms \
                /Library/Preferences/com.microsoft*
     fi
 
     if yn "Remove VitalSource Bookshelf and installed textbooks?"; then
-        rm -rf /Applications/VitalSource\ Bookshelf.app \
+        delete /Applications/VitalSource\ Bookshelf.app \
                /Users/$user/Books/{VitalSource\ Bookshelf,Icon*} \
                /Users/Shared/Books/{VitalSource\ Bookshelf,Icon*}
-        is_empty /Users/$user/Books && rm -rf /Users/$user/Books
-        is_empty /Users/Shared/Books && rm -rf /Users/Shared/Books
+        is_empty /Users/$user/Books && delete /Users/$user/Books
+        is_empty /Users/Shared/Books && delete /Users/Shared/Books
     fi
 
     if yn "Remove Logger Pro?"; then
-        rm -rf /Applications/Logger\ Pro\ 3/ \
+        delete /Applications/Logger\ Pro\ 3/ \
                /Library/Application\ Support/National\ Instruments \
                /Users/$user/Library/Application\ Support/Logger\ Pro
     fi
 
     if yn "Remove Lockdown Browser?"; then
-        rm -rf /Applications/Lockdown\ Browser.app \
+        delete /Applications/Lockdown\ Browser.app \
                /private/var/db/receipts/com.respondus.LockdownBrowser* \
                /Users/*/Library/Application\ Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.respondus.lockdownbrowser.sfl \
                /Users/$user/Library/Application\ Support/Respondus\ LockDown\ Browser
     fi
 
     if yn "Remove McAfee?"; then
-        rm -rf /Applications/McAfee* \
+        delete /Applications/McAfee* \
                /Library/McAfee* \
                /Library/Application\ Support/McAfee* \
                /usr/local/McAfee \
@@ -117,7 +117,7 @@ if yn "Are you comfortable with removing important security systems?"; then
 
     if yn "Disable ARD?"; then
         # To totally remove (requires SIP disabled):
-        #rm -rf /System/Library/CoreServices/RemoteManagement/ARDAgent.app
+        #delete /System/Library/CoreServices/RemoteManagement/ARDAgent.app
         /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -deactivate -configure -access -off
     fi
 
@@ -132,7 +132,7 @@ if yn "Are you comfortable with removing important security systems?"; then
     fi
 
     if yn "Remove Managed Preferences?"; then
-        rm -rf /Library/Managed\ Preferences
+        delete /Library/Managed\ Preferences
         dscl . -delete /Computers
         dscl . -delete /Users/$user dsAttrTypeStandard:MCXSettings
         # Prevent the directory from being recreated; it shouldn't be
@@ -144,7 +144,7 @@ if yn "Are you comfortable with removing important security systems?"; then
         # /Library/Application Support/Barracuda WSA/WSA Uninstaller.app/Contents/Resources/uninstall.sh
         # I don't trust it though, so let's do the dirty work ourselves
         killall wsa_proxy
-        rm -rf /Library/Application\ Support/Barracuda\ WSA \
+        delete /Library/Application\ Support/Barracuda\ WSA \
                /Library/Extensions/BarracudaWSA.kext \
                /Library/Logs/BarracudaWSA* \
                /Library/PreferencePanes/Barracuda\ WSA* \
@@ -155,7 +155,7 @@ if yn "Are you comfortable with removing important security systems?"; then
 
     if yn "Remove JAMF?"; then
         for _ in {1..8}; do killall jamf jamfAgent 2>/dev/null; done
-        rm -rf /usr/local/bin/jamf* \
+        delete /usr/local/bin/jamf* \
                /Library/LaunchAgents/com.jamfsoftware* /Library/LaunchDaemons/com.jamfsoftware* \
                /private/var/db/receipts/com.jamfsoftware* \
                /private/var/root/Library/{Caches,Cookies,Preferences}/com.jamfsoftware* \
@@ -240,6 +240,6 @@ if csrutil status | grep --quiet "enabled"; then
     echo "SIP enabled, skipping clearout of /Applications."
 else
     for app in "${sip_apps[@]}"; do
-        yn "Delete $app?" && rm -rf $app
+        yn "Delete $app?" && delete $app
     done
 fi
