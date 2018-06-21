@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+logfile="/tmp/clean_$(date +%s).log"
+echo > $logfile <<EOF
+Running $1 on $(date).
+Removing files:
+EOF
+
 function yn {
     read -p "$1 [y/n] " reply
     [[ $reply =~ ^[Yy] ]]
@@ -12,6 +18,10 @@ function is_empty {
 function userdel {
     dscl localhost delete /Local/Default/Users/$1
     rm -rf /Users/$1
+}
+
+function delete {
+    rm -rf $@ >> $logfile
 }
 
 if [[ $(id -u) -ne 0 ]]; then
