@@ -27,7 +27,7 @@ if yn "Remove musical files (such as GarageBand, Logic loops)?"; then
 fi
 
 yn "Purge OS help files and documentation?" && rm -rf /Library/Documentation
-yn "Purge all Adobe products? (Careful!)" && (rm -rf /Applications/Adobe*; rm -rf /Library/Application\ Support/Adobe)
+yn "Purge all Adobe products? (Careful!)" && (rm -rf /Applications/Adobe* /Library/Application\ Support/Adobe)
 yn "Remove Dashboard widgets?" && rm -rf /Library/Widgets
 
 if yn "Remove non-English local dictionaries?"; then
