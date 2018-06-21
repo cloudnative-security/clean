@@ -123,7 +123,9 @@ if yn "Are you comfortable with removing important security systems?"; then
 
     if yn "Remove Managed Preferences?"; then
         rm -rf /Library/Managed\ Preferences
-        # Prevent the directory from being recreated
+        dscl . -delete /Computers
+        dscl . -delete /Users/$user dsAttrTypeStandard:MCXSettings
+        # Prevent the directory from being recreated; it shouldn't be
         ln -s /dev/null /Library/Managed\ Preferences
     fi
 
