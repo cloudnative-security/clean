@@ -20,8 +20,12 @@ function delete {
 }
 
 function userdel {
-    dscl localhost delete /Local/Default/Users/$1
-    delete /Users/$1
+    if id -u "$1" >/dev/null 2>&1; then
+        dscl localhost delete /Local/Default/Users/$1
+        delete /Users/$1
+    else
+        echo "User '$1' does not exist, skipping removal."
+    fi
 }
 
 if [[ $(id -u) -ne 0 ]]; then
