@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
 logfile="/tmp/clean_$(date +%s).log"
-echo > $logfile <<EOF
-Running $1 on $(date).
-Removing files:
-EOF
+echo > $logfile <<< "-- Running $1 on $(date). --"
 
 function yn {
     read -p "$1 [y/n] " reply
