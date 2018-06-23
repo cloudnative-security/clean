@@ -70,10 +70,11 @@ yn "Remove Microsoft Auto Update and Error Reporter?" && delete /Library/Applica
 yn "Remove synthesized voices?" && delete /System/Library/Speech
 yn "Remove BBEdit?" && delete /Applications/BBEdit.app
 
-if yn "Clear crash reports and logs?"; then
+if yn "Clear crash reports, saved state, and logs?"; then
     delete /Library/Application\ Support/CrashReporter/*
     delete /Library/Logs/*
     delete /private/var/log/*
+    delete /Users/$user/Library/Saved\ Application\ State
 fi
 
 if yn "Are you comfortable with removing important security systems?"; then
