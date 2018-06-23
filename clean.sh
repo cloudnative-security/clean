@@ -84,6 +84,7 @@ if yn "Are you comfortable with removing important security systems?"; then
         delete /Applications/Microsoft\ Office\ 2011 \
                /Users/$user/Library/Containers/com.microsoft.* \
                /Users/$user/Library/Group\ Containers/*.ms \
+               /Users/$user/Preferences/com.microsoft* \
                /Library/Preferences/com.microsoft*
     fi
 
