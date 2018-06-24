@@ -73,7 +73,7 @@ yn "Remove BBEdit?" && delete /Applications/BBEdit.app
 if yn "Clear crash reports, saved state, and logs?"; then
     delete /Library/Application\ Support/CrashReporter/*
     delete /Library/Logs/*
-    delete /private/var/log/*
+    delete /var/log/* /private/var/log/*
     delete /Users/$user/Library/Saved\ Application\ State
 fi
 
