@@ -115,6 +115,8 @@ if yn "Are you comfortable with removing important security systems?"; then
                /Library/Application\ Support/McAfee* \
                /usr/local/McAfee \
                /Library/Startup\ Items/cma \
+               /Library/LaunchDaemons/com.mcafee* \
+               /Library/LaunchAgents/com.mcafee* \
                /Quarantine
     fi
 
