@@ -55,6 +55,9 @@ yn "Remove factory desktop pictures?" && delete /Library/Desktop\ Pictures
 yn "Remove Default Account User Pictures?" && delete /Library/User\ Pictures
 yn "Remove Automator files?" && delete /Library/Automator
 yn "Remove Screen Savers?" && delete /Library/Screen\ Savers
+yn "Remove Messages files?" && delete /Library/Messages
+# Also of interest:
+#   /Library/Caches
 
 if yn "Remove Photo Booth library?"; then
     if ! is_empty /Users/$user/Pictures/Photo\ Booth\ Library/Pictures && yn "Dump Photo Booth library on desktop for you to sort out?"; then
