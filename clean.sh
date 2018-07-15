@@ -50,7 +50,7 @@ if yn "Remove non-English local dictionaries?"; then
 fi
 
 yn "Remove Microsoft Silverlight?" && delete /Applications/Microsoft\ Silverlight
-yn "Remove iTunes files?" && delete /Library/iTunes
+yn "Remove iTunes files?" && delete /Library/iTunes /Library/Frameworks/iTunesLibrary.framework
 yn "Remove factory desktop pictures?" && delete /Library/Desktop\ Pictures
 yn "Remove Default Account User Pictures?" && delete /Library/User\ Pictures
 yn "Remove Automator files?" && delete /Library/Automator
