@@ -53,6 +53,7 @@ yn "Remove Microsoft Silverlight?" && delete /Applications/Microsoft\ Silverligh
 yn "Remove iTunes files?" && delete /Library/iTunes
 yn "Remove factory desktop pictures?" && delete /Library/Desktop\ Pictures
 yn "Remove Default Account User Pictures?" && delete /Library/User\ Pictures
+yn "Remove Automator files?" && delete /Library/Automator
 yn "Remove Screen Savers?" && delete /Library/Screen\ Savers
 
 if yn "Remove Photo Booth library?"; then
