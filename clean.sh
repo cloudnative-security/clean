@@ -121,6 +121,7 @@ if yn "Are you comfortable with removing important security systems?"; then
                /Library/Startup\ Items/cma \
                /Library/LaunchDaemons/com.mcafee* \
                /Library/LaunchAgents/com.mcafee* \
+               /Library/Frameworks/VirusScanPreferences.framework \
                /Quarantine
     fi
 
