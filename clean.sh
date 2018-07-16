@@ -145,6 +145,14 @@ if yn "Are you comfortable with removing important security systems?"; then
         delete /Library/Managed\ Preferences
         dscl . -delete /Computers
         dscl . -delete /Users/$user dsAttrTypeStandard:MCXSettings
+
+        # Not totally sure this is important, but it seems to at least be residual
+        delete /Library/Preferences/com.apple.{MCX,mdmclient,preferences.sharing}.plist
+
+        delete /private/var/db/ConfigurationProfiles
+        delete /private/var/db/RemoteManagement
+        delete /private/var/mdmadmin
+
         # Prevent the directory from being recreated; it shouldn't be
         ln -s /dev/null /Library/Managed\ Preferences
     fi
