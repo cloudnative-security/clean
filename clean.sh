@@ -56,8 +56,7 @@ yn "Remove Default Account User Pictures?" && delete /Library/User\ Pictures
 yn "Remove Automator files?" && delete /Library/Automator
 yn "Remove Screen Savers?" && delete /Library/Screen\ Savers
 yn "Remove Messages files?" && delete /Library/Messages
-# Also of interest:
-#   /Library/Caches
+yn "Clear /Library/Caches?" && delete /Library/Caches/*
 
 if yn "Remove Photo Booth library?"; then
     if ! is_empty /Users/$user/Pictures/Photo\ Booth\ Library/Pictures && yn "Dump Photo Booth library on desktop for you to sort out?"; then
@@ -152,6 +151,8 @@ if yn "Are you comfortable with removing important security systems?"; then
         delete /private/var/db/ConfigurationProfiles
         delete /private/var/db/RemoteManagement
         delete /private/var/mdmadmin
+
+        userdel _mcxalr
 
         # Prevent the directory from being recreated; it shouldn't be
         ln -s /dev/null /Library/Managed\ Preferences
