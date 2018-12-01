@@ -159,6 +159,7 @@ if yn "Are you comfortable with removing important security systems?"; then
     fi
 
     if yn "Remove Barracuda?"; then
+        # Not used anymore as far as I can see, but why not leave it here
         # You can find the actual uninstall script here:
         # /Library/Application Support/Barracuda WSA/WSA Uninstaller.app/Contents/Resources/uninstall.sh
         # I don't trust it though, so let's do the dirty work ourselves
@@ -170,6 +171,20 @@ if yn "Are you comfortable with removing important security systems?"; then
                /Library/LaunchDaemons/com.barracuda*
         echo "Barracuda restrictions will disappear after restart."
         # TODO: Disable without restart
+    fi
+
+    if yn "Remove iBoss?"; then
+        rm -rfv /Library/LaunchDaemons/com.iboss* \
+                /private/var/db/receipts/*iboss* \
+                /Users/Shared/*ibosscloud* \
+                /Applications/iboss.app
+
+        killall -9 gen4agent-macos
+
+        echo "Turning off autoproxy..."
+        # Normally it gets turned right back on
+        networksetup -setautoproxystate Wi-Fi off
+
     fi
 
     if yn "Remove JAMF?"; then
