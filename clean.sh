@@ -188,7 +188,7 @@ if yn "Are you comfortable with removing important security systems?"; then
     fi
 
     if yn "Remove JAMF?"; then
-        for _ in {1..8}; do killall jamf jamfAgent 2>/dev/null; done
+        for _ in {1..8}; do killall jamf jamfAgent JamfAgent JamfDaemon 2>/dev/null; done
         delete /usr/local/bin/jamf* \
                /Library/LaunchAgents/com.jamfsoftware* /Library/LaunchDaemons/com.jamfsoftware* \
                /private/var/db/receipts/com.jamfsoftware* \
