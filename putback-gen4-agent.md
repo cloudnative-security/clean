@@ -12,5 +12,13 @@ in the browser http://127.0.0.1:8000/proxy.pac
 sudo pkill gen4agent
 sudo mv /Applications/Utilities/iboss.app/gen4agent/gen4agent-macos /Applications/Utilities/iboss.app/gen4agent/gen4agent-macos.bak
 
+
+**Remove Proxy Setting in mac**
+```
+Wifi -> network preference -> advanced -> proxies -> toggle automatic proxy configuration
+```
+to add this back copy paste http://127.0.0.1:8000/proxy.pac and toggle it on
+
+
 This is required for okta integration though so it will stop your okta from running
 and all application that requires okta for sso
