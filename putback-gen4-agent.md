@@ -9,9 +9,10 @@
 in the browser http://127.0.0.1:8000/proxy.pac
 
 # remove iboss
+```
 sudo pkill gen4agent
 sudo mv /Applications/Utilities/iboss.app/gen4agent/gen4agent-macos /Applications/Utilities/iboss.app/gen4agent/gen4agent-macos.bak
-
+```
 
 **Remove Proxy Setting in mac**
 ```
