@@ -20,6 +20,9 @@ Wifi -> network preference -> advanced -> proxies -> toggle automatic proxy conf
 ```
 to add this back copy paste http://127.0.0.1:8000/proxy.pac and toggle it on
 
+![Screenshot 2022-03-08 at 11 50 38](https://user-images.githubusercontent.com/13744098/157234006-92f18f0d-7bab-45df-a650-b1b340ebd85d.png)
+
+
 
 This is required for okta integration though so it will stop your okta from running
 and all application that requires okta for sso
