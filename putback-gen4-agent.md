@@ -1,9 +1,9 @@
 # put back iboss
 
-sudo mv /Applications/Utilities/iboss.app/gen4agent/gen4agent-macos.bak /Applications/Utilities/iboss.app/gen4agent/gen4agent-macos 
+`sudo mv /Applications/Utilities/iboss.app/gen4agent/gen4agent-macos.bak /Applications/Utilities/iboss.app/gen4agent/gen4agent-macos `
 
 # re run iboss
-sudo /Applications/Utilities/iboss.app/gen4agent/gen4agent-macos -d
+`sudo /Applications/Utilities/iboss.app/gen4agent/gen4agent-macos -d`
 
 # change your proxy settings to (usually automatic)
 in the browser http://127.0.0.1:8000/proxy.pac
